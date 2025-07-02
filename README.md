@@ -1,2 +1,2 @@
-# Guntu
-Guntu IT Solutions, Landing page
+# Guntu IT Solutions
+
