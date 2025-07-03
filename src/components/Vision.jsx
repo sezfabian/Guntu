@@ -1,8 +1,9 @@
 import React from 'react';
+import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { fadeIn, slideIn, textVariant, staggerContainer } from '../utils/motion';
-import { web, app, brand, video, reactjs } from '../assets';
+import { web, app, brand, video, reactjs, ai } from '../assets';
 
 const VisionCard = ({ title, description, icon, index, viewportTopY }) => {
   const [scrollDirection, setScrollDirection] = React.useState('down');
@@ -62,20 +63,20 @@ const Vision = () => {
       pricing: "From $2,500"
     },
     {
-      title: "Website Development",
-      description: "Landing pages and company websites that convert visitors to customers",
-      icon: web,
-      links: ["Portfolio", "Case Studies", "Get Quote"],
-      sampleProjects: ["Corporate Website", "Landing Page", "Blog Platform"],
-      pricing: "From $800"
+      title: "Agentic AI & Automation, API Integration and Payment Gateways",
+      description: "Intelligent automation using AI-powered solutions, including: chatbots, workflow automation, with API integration including payment gateways, SMS, and email services.",
+      icon: ai,
+      links: ["Demo", "Case Studies", "Get Quote"],
+      sampleProjects: ["AI Chatbots", "Workflow Automation", "Smart Analytics"],
+      pricing: "From $1,500"
     },
     {
-      title: "Design & Branding",
-      description: "Logos, design, merchandising, banners and signs",
+      title: "Design, Branding & Website Development",
+      description: "Complete design solutions including logos, branding, websites, landing pages, and marketing materials that convert visitors to customers.",
       icon: brand,
       links: ["Portfolio", "Case Studies", "Get Quote"],
-      sampleProjects: ["Logo Design", "Brand Identity", "Marketing Materials"],
-      pricing: "From $200"
+      sampleProjects: ["Logo Design", "Corporate Website", "Brand Identity"],
+      pricing: "From $800"
     },
     {
       title: "Professional Videography & Photography",
@@ -84,7 +85,7 @@ const Vision = () => {
       links: ["Portfolio", "Case Studies", "Get Quote"],
       sampleProjects: ["Product Videos", "Corporate Events", "Brand Photography"],
       pricing: "From $300"
-    },
+    }
   ];
 
   const [scrollDirection, setScrollDirection] = React.useState('down');
@@ -138,7 +139,20 @@ const Vision = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={solution.title}
-              variants={fadeIn("up", "spring", index * 0.1, 0.75)}
+              initial={{ 
+                x: scrollDirection === 'down' ? -350 : 350, 
+                opacity: 0
+              }}
+              animate={{ 
+                x: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 400 * index) ? 0 : (scrollDirection === 'down' ? 350 : -350), 
+                opacity: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 400 * index) ? 1 : 0,
+                scale: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 400 * index) ? 1 : 1
+              }}
+              transition={{
+                type: "tween",
+                duration: 0.5,
+                bounce: 0,
+              }}
               whileHover={{ 
                 scale: 1.05,
                 transition: { duration: 0.3 }
@@ -147,13 +161,27 @@ const Vision = () => {
             >
               <div className='lg:flex items-center justify-center gap-6'>
                 {/* Image */}
-                <div className='w-50 h-60 flex items-center mx-auto flex-shrink-0'>
-                  <img 
-                    src={solution.icon} 
-                    alt={solution.title}
-                    className='w-full h-full object-contain'
-                  />
-                </div>
+                  <div className='w-50 h-60 flex items-center mx-auto flex-shrink-0'>
+                    <motion.div
+                      initial={{ y: 0 }}
+                      animate={{ 
+                        y: [0, -10, 0],
+                        rotate: [0, 2, -2, 0]
+                      }}
+                      transition={{
+                        type: "tween",
+                        duration: 0.5,
+                        bounce: 0,
+                      }}
+                    >
+                        <img 
+                          src={solution.icon} 
+                          alt={solution.title}
+                          className='w-full h-full object-contain'
+                        />
+                    </motion.div>
+                  </div>
+
                 {/* Text Content */}
                 <div className='flex-1'>
                   <h4 className='text-white font-bold text-[20px] mb-2'>{solution.title}</h4>
