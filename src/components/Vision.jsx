@@ -16,9 +16,9 @@ const VisionCard = ({ title, description, icon, index, viewportTopY }) => {
         opacity: 0
       }}
       animate={{ 
-        x: viewportTopY > 300 ? 0 : (scrollDirection === 'down' ? 350 : -350), 
-        opacity: viewportTopY > 300 ? 1 : 0,
-        scale: viewportTopY > 300 ? 1 : 1
+        x: viewportTopY > 200 ? 0 : (scrollDirection === 'down' ? 350 : -350), 
+        opacity: viewportTopY > 200 ? 1 : 0,
+        scale: viewportTopY > 200 ? 1 : 1
       }}
       onViewportEnter={() => {
         setIsVisible(true);
@@ -33,7 +33,7 @@ const VisionCard = ({ title, description, icon, index, viewportTopY }) => {
         duration: 0.5,
         bounce: 0,
       }}
-      className='bg-tertiary rounded-3xl w-full mx-auto mt-50 sm:mt-20 shadow-card'
+      className='bg-tertiary rounded-3xl w-full mx-auto mt-20 sm:mt-20 shadow-card'
     >
       <div className='text-left'>
         <div className='w-full h-15 mx-auto rounded-3xl flex lg:mb-6'>
@@ -127,7 +127,7 @@ const Vision = () => {
           duration: 0.5,
           bounce: 0,
         }}
-        className='mt-20 lg:mt-50'
+        className='mt-20 lg:mt-30'
       >
         <h3 className='text-[#EF6304] font-bold text-[24px] lg:text-[40px]'>
           Our Solutions&nbsp; 🛠️</h3>
@@ -165,13 +165,20 @@ const Vision = () => {
                     <motion.div
                       initial={{ y: 0 }}
                       animate={{ 
-                        y: [0, -10, 0],
+                        y: [0, -2, 0],
                         rotate: [0, 2, -2, 0]
                       }}
                       transition={{
-                        type: "tween",
-                        duration: 0.5,
-                        bounce: 0,
+                        y: {
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        },
+                        rotate: {
+                          duration: 6,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }
                       }}
                     >
                         <img 

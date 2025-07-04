@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import React, { Suspense, useEffect, useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Preload, ContactShadows, Html, Environment, useGLTF } from "@react-three/drei";
-
+import logo from '../../assets/logo.png';
 
 const Computers = (props) => {
   const group = useRef()
@@ -34,13 +34,13 @@ const Computers = (props) => {
     <group ref={group} {...props} dispose={null}>
       <group rotation-x={-0.425} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
-          <mesh material={materials.aluminium} geometry={nodes['Cube008'].geometry} />
+          <mesh material={materials.aluminium} geometry={nodes['Cube008'].geometry}/>
           <mesh material={materials['matte.001']} geometry={nodes['Cube008_1'].geometry} />
           <mesh geometry={nodes['Cube008_2'].geometry}>
             {/* Drei's HTML component can "hide behind" canvas geometry */}
-            <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} zIndexRange={[5, 0]} transform occlude>
+            <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} zIndexRange={[15, 10]} transform occlude>
               <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
-              <iframe width="332" height="215" src="https://www.youtube.com/embed/LGdPMf-SgBA?autoplay=1" title="Build And Deploy a Personal Portfolio with ReactJS and TailwindCSS | React Beginner Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe width="332" height="215" src="https://www.youtube.com/embed/LGdPMf-SgBA?autoplay=1" title="Build And Deploy a Personal Portfolio with ReactJS and TailwindCSS | React Beginner Tutorial" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
               </div>
             </Html>
           </mesh>
