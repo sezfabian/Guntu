@@ -1,10 +1,11 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import "tailwindcss";
+
 
 * {
   margin: 0;
@@ -19,6 +20,92 @@
   margin-top: -100px;
   padding-bottom: 100px;
   display: block;
+}
+
+/* Border Animation CSS Custom Property */
+@property --border-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: '<angle>';
+}
+
+/* Border Animation Keyframes */
+@keyframes border {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Animated Border Classes */
+.animate-border {
+  --border-angle: 0deg;
+  animation: border 20s linear infinite;
+}
+
+.animated-border-gradient {
+  position: relative;
+  --border-angle: 0deg;
+  background: conic-gradient(from var(--border-angle), #EF6304, #3a1702, #2f2c2a);
+
+  padding: 2px;
+  animation: border 4s linear infinite;
+}
+
+.animated-border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--border-angle), #000000, #3a1702, #ff6a06, #0e0d0d, #000000);
+  animation: border 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.animated-border-white {
+  position: relative;
+  --border-angle: 0deg;
+  background: conic-gradient(from var(--border-angle), #ffffff, #f0f0f0, #ffffff);
+  border-radius: inherit;
+  padding: 2px;
+  animation: border 4s linear infinite;
+}
+
+.animated-border-white::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--border-angle), #ffffff, #f0f0f0, #ffffff);
+  animation: border 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.animated-border-rainbow {
+  position: relative;
+  --border-angle: 0deg;
+  background: conic-gradient(from var(--border-angle), #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  border-radius: inherit;
+  padding: 2px;
+  animation: border 4s linear infinite;
+}
+
+.animated-border-rainbow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--border-angle), #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  animation: border 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
 .black-gradient {

@@ -40,7 +40,7 @@ const Computers = (props) => {
             {/* Drei's HTML component can "hide behind" canvas geometry */}
             <Html rotation-x={-Math.PI / 2} position={[0, 0.05, -0.09]} zIndexRange={[15, 10]} transform occlude>
               <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
-              <iframe width="332" height="215" src="https://www.youtube.com/embed/LGdPMf-SgBA?autoplay=1" title="Build And Deploy a Personal Portfolio with ReactJS and TailwindCSS | React Beginner Tutorial" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe width="332" height="215"src="https://www.youtube.com/embed/8LQSe_1D27I?autoplay=1" title="We are Guntu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
               </div>
             </Html>
           </mesh>

@@ -3,37 +3,39 @@ import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { fadeIn, slideIn, textVariant, staggerContainer } from '../utils/motion';
-import { web, app, brand, video, reactjs, ai } from '../assets';
+import { web, app, brand, video, reactjs, ai, security } from '../assets';
 
 const VisionCard = ({ title, description, icon, index, viewportTopY }) => {
   const [scrollDirection, setScrollDirection] = React.useState('down');
   const [isVisible, setIsVisible] = React.useState(false);
 
   return (
-    <motion.div
-      initial={{ 
-        x: scrollDirection === 'down' ? 350 : -350, 
-        opacity: 0
-      }}
-      animate={{ 
-        x: viewportTopY > 200 ? 0 : (scrollDirection === 'down' ? 350 : -350), 
-        opacity: viewportTopY > 200 ? 1 : 0,
-        scale: viewportTopY > 200 ? 1 : 1
-      }}
-      onViewportEnter={() => {
-        setIsVisible(true);
-        setScrollDirection('down');
-      }}
-      onViewportLeave={() => {
-        setIsVisible(false);
-        setScrollDirection('down');
-      }}
-      transition={{
-        type: "tween",
-        duration: 0.5,
-        bounce: 0,
-      }}
-      className='bg-tertiary rounded-3xl w-full mx-auto mt-20 sm:mt-20 shadow-card'
+    <motion.div 
+    initial={{ 
+      x: scrollDirection === 'down' ? 350 : -350, 
+      opacity: 0
+    }}
+    animate={{ 
+      x: viewportTopY > 200 ? 0 : (scrollDirection === 'down' ? 350 : -350), 
+      opacity: viewportTopY > 200 ? 1 : 0,
+      scale: viewportTopY > 200 ? 1 : 1
+    }}
+    onViewportEnter={() => {
+      setIsVisible(true);
+      setScrollDirection('down');
+    }}
+    onViewportLeave={() => {
+      setIsVisible(false);
+      setScrollDirection('down');
+    }}
+    transition={{
+      type: "tween",
+      duration: 0.5,
+      bounce: 0,
+    }}
+    className="animated-border-gradient bg-neutral-800 rounded-3xl mx-0 md:mx-auto mt-20 sm:mt-20 ">
+    <div
+      className='bg-neutral-800 p-8 rounded-3xl w-full shadow-card'
     >
       <div className='text-left'>
         <div className='w-full h-15 mx-auto rounded-3xl flex lg:mb-6'>
@@ -41,6 +43,7 @@ const VisionCard = ({ title, description, icon, index, viewportTopY }) => {
         </div>
         <p className='text-secondary text-[13px] sm:text-[16px] leading-[28px] whitespace-pre-line'>{description}</p>
       </div>
+    </div>
     </motion.div>
   );
 };
@@ -63,12 +66,20 @@ const Vision = () => {
       pricing: "From $2,500"
     },
     {
-      title: "Agentic AI & Automation, API Integration and Payment Gateways",
-      description: "Intelligent automation using AI-powered solutions, including: chatbots, workflow automation, with API integration including payment gateways, SMS, and email services.",
+      title: "Agentic AI & Automation, API Integration, Payment Gateways and more",
+      description: "Intelligent automation using AI-powered solutions, including: chatbots and workflow automation. We also offer a range of other services including: API integration for payment gateways, SMS, and email services.",
       icon: ai,
       links: ["Demo", "Case Studies", "Get Quote"],
       sampleProjects: ["AI Chatbots", "Workflow Automation", "Smart Analytics"],
       pricing: "From $1,500"
+    },
+    {
+      title: "Professional Videography & Photography",
+      description: "Digital content creation for marketing and branding",
+      icon: video,
+      links: ["Portfolio", "Case Studies", "Get Quote"],
+      sampleProjects: ["Product Videos", "Corporate Events", "Brand Photography"],
+      pricing: "From $300"
     },
     {
       title: "Design, Branding & Website Development",
@@ -79,13 +90,14 @@ const Vision = () => {
       pricing: "From $800"
     },
     {
-      title: "Professional Videography & Photography",
-      description: "Digital content creation for marketing and branding",
-      icon: video,
-      links: ["Portfolio", "Case Studies", "Get Quote"],
-      sampleProjects: ["Product Videos", "Corporate Events", "Brand Photography"],
-      pricing: "From $300"
-    }
+      title: "Security & Surveillance Systems with Web Integration",
+      description: "Complete security solutions including CCTV systems, access control, alarm systems, and integrated web-based management platforms for real-time monitoring and control.",
+      icon: security,
+      links: ["Security Demo", "Integration Gallery", "Get Assessment"],
+      sampleProjects: ["Logo Design", "Corporate Website", "Brand Identity"],
+      pricing: "From $800"
+    },
+
   ];
 
   const [scrollDirection, setScrollDirection] = React.useState('down');
@@ -103,7 +115,7 @@ const Vision = () => {
 
   return (
     <section
-      className={`${styles.padding} max-w-7xl mx-auto relative z-0`} 
+      className={`${styles.padding} max-w-7xl mx-[-30px] md:mx-auto relative z-0`} 
       id="vision"
     >
       <div>
@@ -129,116 +141,62 @@ const Vision = () => {
         }}
         className='mt-20 lg:mt-30'
       >
-        <h3 className='text-[#EF6304] font-bold text-[24px] lg:text-[40px]'>
+        <h3 className='text-[#EF6304] font-bold text-[24px] lg:text-[40px] mb-8 text-center md:text-left'>
           Our Solutions&nbsp; 🛠️</h3>
-        
-        <motion.div 
-          variants={staggerContainer()}
-          className='grid grid-cols-1 md:grid-cols-2 gap-6'
-        >
-          {solutions.map((solution, index) => (
-            <motion.div
-              key={solution.title}
-              initial={{ 
-                x: scrollDirection === 'down' ? -350 : 350, 
-                opacity: 0
-              }}
-              animate={{ 
-                x: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 400 * index) ? 0 : (scrollDirection === 'down' ? 350 : -350), 
-                opacity: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 400 * index) ? 1 : 0,
-                scale: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 400 * index) ? 1 : 1
-              }}
-              transition={{
-                type: "tween",
-                duration: 0.5,
-                bounce: 0,
-              }}
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.3 }
-              }}
-              className='bg-tertiary rounded-2xl shadow-card group  cursor-pointer justify-items-center'
-            >
-              <div className='lg:flex items-center justify-center gap-6'>
-                {/* Image */}
-                  <div className='w-50 h-60 flex items-center mx-auto flex-shrink-0'>
-                    <motion.div
-                      initial={{ y: 0 }}
-                      animate={{ 
-                        y: [0, -2, 0],
-                        rotate: [0, 2, -2, 0]
-                      }}
-                      transition={{
-                        y: {
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        },
-                        rotate: {
-                          duration: 6,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }
-                      }}
-                    >
-                        <img 
-                          src={solution.icon} 
-                          alt={solution.title}
-                          className='w-full h-full object-contain'
-                        />
-                    </motion.div>
-                  </div>
+          <motion.div 
+            variants={staggerContainer()}
+            className="bg-[url(/src/assets/black.jpg)] bg-cover bg-no-repeat bg-center p-4 rounded-3xl shadow-card"
+          >
+            
+            <div className='grid grid-cols-1 md:grid-cols-10 gap-6'>
+              {solutions.map((solution, index) => (
+                <motion.div
+                  key={solution.title}
+                  initial={{ 
+                    x: scrollDirection === 'down' ? -350 : 350, 
+                    opacity: 0
+                  }}
+                  animate={{ 
+                    x: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 200 * index) ? 0 : (scrollDirection === 'down' ? 350 : -350), 
+                    opacity: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 200 * index) ? 1 : 0,
+                    scale: viewportTopY > (window.innerWidth >= 1024 ? 800 : 800 + 200 * index) ? 1 : 1
+                  }}
+                  transition={{
+                    type: "tween",
+                    duration: 0.5,
+                    bounce: 0,
+                  }}
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.3 }
+                  }}
+                  className={`bg-neutral-800 .animated-border-hover rounded-2xl p-6 shadow-sm ${
+                    index === 0? 'md:col-span-4' : index === 1? 'md:col-span-6' : index === 2? 'md:col-span-3' : index === 3? 'md:col-span-3' : index === 4? 'md:col-span-4' : 'md:col-span-3'
+                  }`}
+                >
+                  <div className='flex items-start'>
+                    {/* Icon */}
+                    <div className='w-12 h-12 bg-gray-100 rounded-full border border-gray-300 flex items-center justify-center flex-shrink-0'>
+                      <img 
+                        src={solution.icon} 
+                        alt={solution.title}
+                        className='w-6 h-6 object-contain'
+                      />
+                    </div>
 
-                {/* Text Content */}
-                <div className='flex-1'>
-                  <h4 className='text-white font-bold text-[20px] mb-2'>{solution.title}</h4>
-                  <p className='text-secondary text-[14px] leading-[20px]'>{solution.description}</p>
-                </div>
-              </div>
-
-              {/* Hover Content */}
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                whileHover={{ opacity: 1, height: "auto" }}
-                transition={{ duration: 0.3 }}
-                className='overflow-hidden'
-              >
-                <div className='border-t border-gray-600 pt-4 mt-4'>
-                  {/* Links */}
-                  <div className='mb-4'>
-                    <h5 className='text-[#EF6304] font-semibold text-[14px] mb-2'>Quick Links</h5>
-                    <div className='flex flex-wrap gap-2'>
-                      {solution.links.map((link, idx) => (
-                        <button key={idx} className='bg-[#EF6304] text-white px-3 py-1 rounded-full text-[12px] hover:bg-[#d55a04] transition-colors'>
-                          {link}
-                        </button>
-                      ))}
+                    {/* Content */}
+                    <div className='flex-1 ml-4'>
+                      <h5 className='text-gray-200 font-bold text-[18px] mb-3'>{solution.title}</h5>
                     </div>
                   </div>
-
-                  {/* Sample Projects */}
-                  <div className='mb-4'>
-                    <h5 className='text-[#EF6304] font-semibold text-[14px] mb-2'>Sample Projects</h5>
-                    <ul className='text-secondary text-[12px] space-y-1'>
-                      {solution.sampleProjects.map((project, idx) => (
-                        <li key={idx} className='flex items-center'>
-                          <span className='w-1 h-1 bg-[#EF6304] rounded-full mr-2'></span>
-                          {project}
-                        </li>
-                      ))}
-                    </ul>
+                  <div className='flex items-start'>
+                    <p className='text-gray-300 text-[14px] leading-[20px]'>{solution.description}</p>
                   </div>
-
-                  {/* Pricing */}
-                  <div>
-                    <h5 className='text-[#EF6304] font-semibold text-[14px] mb-2'>Starting Price</h5>
-                    <p className='text-white font-bold text-[16px]'>{solution.pricing}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </motion.div>
+                </motion.div>
+              ))}
+            </div>
+            
+          </motion.div>
       </motion.div>
 
       <motion.div 

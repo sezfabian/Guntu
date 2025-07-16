@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { About, Contact, Vision, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas} from './components'
+import { About, Contact, Vision, Feedbacks, Hero, Navbar, Tech, Works, StarsCanvas, Footer} from './components'
 
 const  App = () => {
   return (
@@ -15,10 +15,8 @@ const  App = () => {
               </div>
               <div className="mt-[-150px]">
                 <Vision/>
-                <Tech/>
-                <Works/>
-                <Feedbacks/>
               </div>
+              <Footer/>
               <div className="relative z-0">
                 <StarsCanvas/>
               </div>
@@ -34,6 +32,7 @@ const  App = () => {
               <div className="mt-[-150px]">
                 <About/>
               </div>
+              <Footer/>
               <div className="relative z-0">
                 <StarsCanvas/>
               </div>
@@ -49,6 +48,7 @@ const  App = () => {
               <div className="mt-[-150px]">
                 <Contact/>
               </div>
+              <Footer/>
               <div className="relative z-0">
                 <StarsCanvas/>
               </div>
@@ -64,6 +64,7 @@ const  App = () => {
               <div className="mt-[-150px]">
                 <Works/>
               </div>
+              <Footer/>
               <div className="relative z-0">
                 <StarsCanvas/>
               </div>
