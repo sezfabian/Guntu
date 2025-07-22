@@ -1,177 +1,55 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
-import emailjs from '@emailjs/browser';
+import logo from '../assets/logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome, faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faTwitter, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
-  const formRef = useRef();
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
-  }, []);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        {
-          from_name: form.name,
-          to_name: 'Guntu IT Solutions',
-          from_email: form.email,
-          to_email: 'contact@guntu.com',
-          message: form.message,
-        },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert('Thank you. I will get back to you as soon as possible.');
-
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.log(error);
-          alert('Ahh, something went wrong. Please try again.');
-        }
-      );
-  };
-
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className={`${styles.padding} max-w-7xl mx-auto`}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form - Left Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <div>
-              <h3 className="text-[#EF6304] font-bold text-[32px] mb-4">Contact Us</h3>
-              <p className="text-gray-300 text-[16px] leading-[24px]">
-                Ready to start your next project? Get in touch with us and let's bring your ideas to life.
-              </p>
+    <footer className="text-white">
+      <div className={`${styles.padding} mx-`}>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
+          {/* Logo - Left Side */}
+          <div className="space-y-4 items-center justify-center flex lg:col-span-2 grid grid-cols-1 lg:grid-cols-2">
+            <div className='space-y-4 items-center justify-center flex lg:col-span-1'>
+              <img src={logo} alt="Guntu Logo" className="w-40 h-25" />
             </div>
-
-            <form
-              ref={formRef}
-              onSubmit={handleSubmit}
-              className="space-y-4"
-            >
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="bg-gray-800 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-gray-700 focus:border-[#EF6304] w-full"
-                />
+            {/* Social Links */}
+            <div className="space-y-4  py-6 lg:col-span-1 me-5">
+              <h4 className="text-white font-bold text-[20px] mb-4 hidden md:block">Follow Us</h4>
+              <div className="flex space-x-4 items-center justify-between ">
+                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
+                <FontAwesomeIcon icon={faFacebook} />
+                </a>
+                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
+                <FontAwesomeIcon icon={faTwitter} />
+                </a>
+                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
+                <FontAwesomeIcon icon={faInstagram} />
+                </a>
               </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Your Email"
-                  className="bg-gray-800 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-gray-700 focus:border-[#EF6304] w-full"
-                />
-              </div>
-              <div>
-                <textarea
-                  rows="4"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Your Message"
-                  className="bg-gray-800 py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-gray-700 focus:border-[#EF6304] w-full resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-[#EF6304] py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl hover:bg-[#d55a04] transition-colors"
-              >
-                {loading ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          </motion.div>
-
+            </div>
+          </div>
           {/* Important Links - Right Side */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-8 lg:col-span-2"
           >
             <div>
-              <h3 className="text-[#EF6304] font-bold text-[32px] mb-6">Quick Links</h3>
+              <h5 className="text-[#EF6304] font-bold text-[32px] border-b border-gray-700">Quick Links</h5>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Services */}
-              <div className="space-y-4">
-                <h4 className="text-white font-bold text-[20px]">Services</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#vision" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      Web Development
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vision" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      Mobile Apps
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vision" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      AI & Automation
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vision" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      Design & Branding
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vision" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      Videography
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
+            <div className="grid grid-cols-1 md:grid-cols-2">
               {/* Company */}
-              <div className="space-y-4">
-                <h4 className="text-white font-bold text-[20px]">Company</h4>
+              <div className="">
+                <h6 className="text-white font-bold text-[20px]">Company</h6>
                 <ul className="space-y-2">
                   <li>
                     <a href="/about" className="text-gray-300 hover:text-[#EF6304] transition-colors">
@@ -185,54 +63,29 @@ const Footer = () => {
                   </li>
                   <li>
                     <a href="/contact" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      Contact
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#vision" className="text-gray-300 hover:text-[#EF6304] transition-colors">
-                      Vision
+                      Contact us
                     </a>
                   </li>
                 </ul>
               </div>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-4 pt-6 border-t border-gray-700">
-              <h4 className="text-white font-bold text-[20px]">Get In Touch</h4>
+              {/* Contact Info */}
+            <div className="space-y-4">
+              <h5 className="text-white font-bold text-[20px]">Get In Touch</h5>
               <div className="space-y-2">
                 <p className="text-gray-300 flex items-center">
-                  <span className="mr-2">📧</span>
-                  contact@guntu.com
+                  <span className="mr-2"> <FontAwesomeIcon icon={faEnvelope} /></span>
+                  info@guntuit.co.ke
                 </p>
                 <p className="text-gray-300 flex items-center">
-                  <span className="mr-2">📱</span>
-                  +234 XXX XXX XXXX
+                  <span className="mr-2"> <FontAwesomeIcon icon={faPhone} /></span>
+                  +2547 1846 3900
                 </p>
                 <p className="text-gray-300 flex items-center">
-                  <span className="mr-2">📍</span>
-                  Lagos, Nigeria
+                  <span className="mr-2"> <FontAwesomeIcon icon={faLocationDot} /></span>
+                  Nairobi, Kenya
                 </p>
               </div>
             </div>
-
-            {/* Social Links */}
-            <div className="space-y-4">
-              <h4 className="text-white font-bold text-[20px]">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
-                  📘
-                </a>
-                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
-                  🐦
-                </a>
-                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
-                  💼
-                </a>
-                <a href="#" className="text-gray-300 hover:text-[#EF6304] transition-colors text-2xl">
-                  📷
-                </a>
-              </div>
             </div>
           </motion.div>
         </div>

@@ -27,7 +27,7 @@ const Computers = (props) => {
     const scrollRotation = -scrollY.current * 0.002; // Negative for left, adjust multiplier for sensitivity
     group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, scrollRotation, 0.1)
     group.current.rotation.z = THREE.MathUtils.lerp(group.current.rotation.z, Math.sin(t / 8) / 20, 0.1)
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, (-2 + Math.sin(t / 2)) / 2, 0.1)
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, -1, 0.1)
   })
 
   return (

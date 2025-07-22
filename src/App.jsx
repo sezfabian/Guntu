@@ -17,9 +17,6 @@ const  App = () => {
                 <Vision/>
               </div>
               <Footer/>
-              <div className="relative z-0">
-                <StarsCanvas/>
-              </div>
             </>
           } />
           
@@ -33,9 +30,6 @@ const  App = () => {
                 <About/>
               </div>
               <Footer/>
-              <div className="relative z-0">
-                <StarsCanvas/>
-              </div>
             </>
           } />
           
@@ -65,9 +59,6 @@ const  App = () => {
                 <Works/>
               </div>
               <Footer/>
-              <div className="relative z-0">
-                <StarsCanvas/>
-              </div>
             </>
           } />
         </Routes>

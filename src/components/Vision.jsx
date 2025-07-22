@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
 import { fadeIn, slideIn, textVariant, staggerContainer } from '../utils/motion';
@@ -33,9 +32,9 @@ const VisionCard = ({ title, description, icon, index, viewportTopY }) => {
       duration: 0.5,
       bounce: 0,
     }}
-    className="animated-border-gradient bg-neutral-800 rounded-3xl mx-0 md:mx-auto mt-20 sm:mt-20 ">
+    className="rounded-3xl mx-0 md:mx-auto mt-10 sm:mt-20 ">
     <div
-      className='bg-neutral-800 p-8 rounded-3xl w-full shadow-card'
+      className='p-8 rounded-3xl w-full shadow-card'
     >
       <div className='text-left'>
         <div className='w-full h-15 mx-auto rounded-3xl flex lg:mb-6'>
@@ -82,15 +81,15 @@ const Vision = () => {
       pricing: "From $300"
     },
     {
-      title: "Design, Branding & Website Development",
-      description: "Complete design solutions including logos, branding, websites, landing pages, and marketing materials that convert visitors to customers.",
+      title: "Design & Branding",
+      description: "Complete design solutions including logos, branding, landing pages, and marketing materials that convert visitors to customers.",
       icon: brand,
       links: ["Portfolio", "Case Studies", "Get Quote"],
       sampleProjects: ["Logo Design", "Corporate Website", "Brand Identity"],
       pricing: "From $800"
     },
     {
-      title: "Security & Surveillance Systems with Web Integration",
+      title: "Security & Surveillance Systems",
       description: "Complete security solutions including CCTV systems, access control, alarm systems, and integrated web-based management platforms for real-time monitoring and control.",
       icon: security,
       links: ["Security Demo", "Integration Gallery", "Get Assessment"],
@@ -170,17 +169,17 @@ const Vision = () => {
                     scale: 1.02,
                     transition: { duration: 0.3 }
                   }}
-                  className={`bg-neutral-800 .animated-border-hover rounded-2xl p-6 shadow-sm ${
+                  className={`bg-neutral-900 .animated-border-gradient rounded-2xl p-6 shadow-sm ${
                     index === 0? 'md:col-span-4' : index === 1? 'md:col-span-6' : index === 2? 'md:col-span-3' : index === 3? 'md:col-span-3' : index === 4? 'md:col-span-4' : 'md:col-span-3'
                   }`}
                 >
                   <div className='flex items-start'>
                     {/* Icon */}
-                    <div className='w-12 h-12 bg-gray-100 rounded-full border border-gray-300 flex items-center justify-center flex-shrink-0'>
+                    <div className='w-20 h-20 flex items-center justify-center flex-shrink-0'>
                       <img 
                         src={solution.icon} 
                         alt={solution.title}
-                        className='w-6 h-6 object-contain'
+                        className='w-20 h-20 object-contain'
                       />
                     </div>
 
@@ -222,7 +221,7 @@ const Vision = () => {
             <p className='text-secondary text-[16px]'>Years Experience</p>
           </motion.div>
           <motion.div variants={fadeIn("up", "spring", 0.2, 0.75)} className='text-center'>
-            <h4 className='text-[#EF6304] font-bold text-[32px]'>150+</h4>
+            <h4 className='text-[#EF6304] font-bold text-[32px]'>3+</h4>
             <p className='text-secondary text-[16px]'>Projects Delivered</p>
           </motion.div>
           <motion.div variants={fadeIn("up", "spring", 0.3, 0.75)} className='text-center'>

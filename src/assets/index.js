@@ -34,6 +34,9 @@ import security from "./security.png";
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import fabian from "./team/fabian.jpg";
+import walter from "./team/walter.jpg";
+import faith from "./team/faith.jpg";
 
 export {
   logo,
@@ -69,4 +72,7 @@ export {
   carrent,
   jobit,
   tripguide,
+  fabian,
+  walter,
+  faith,
 };
