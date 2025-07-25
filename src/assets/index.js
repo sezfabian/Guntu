@@ -30,6 +30,8 @@ import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import security from "./security.png";
+import farm from "./farm.png";
+import munjiti from "./munjiti.png"
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -75,4 +77,6 @@ export {
   fabian,
   walter,
   faith,
+  farm,
+  munjiti,
 };
