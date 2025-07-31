@@ -1,8 +1,25 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import { useState, useEffect } from "react";
+import { HeroSkeleton } from "./Loader";
 
 const Hero = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time for 3D model and other resources
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <HeroSkeleton />;
+  }
+
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
