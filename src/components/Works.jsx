@@ -13,9 +13,9 @@ const ProjectCard = ({ project, index, viewportTopY }) => {
         opacity: 0
       }}
       animate={{ 
-        x: viewportTopY > (window.innerWidth >= 1024 ? 200 : 400 +200 * index) ? 0 : 350, 
-        opacity: viewportTopY > (window.innerWidth >= 1024 ? 200 : 400 + 200 * index) ? 1 : 0,
-        scale: viewportTopY > (window.innerWidth >= 1024 ? 200 : 400 + 200 * index) ? 1 : 1
+        x: viewportTopY > (window.innerWidth >= 1024 ? 200 : 300 * index) ? 0 : 350, 
+        opacity: viewportTopY > (window.innerWidth >= 1024 ? 200 : 200 + 200 * index) ? 1 : 0,
+        scale: 1,
       }}
       transition={{
         type: "tween",
@@ -107,6 +107,72 @@ const ProjectCard = ({ project, index, viewportTopY }) => {
   );
 };
 
+// Scroll Arrow Component
+const ScrollArrow = ({ viewportTopY }) => {
+  const isVisible = viewportTopY < 300;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ 
+        opacity: isVisible ? 1 : 0,
+        y: isVisible ? 0 : -20
+      }}
+      transition={{
+        duration: 0.5,
+        ease: "easeInOut"
+      }}
+      className={`relative mt-7 justify-center items-center align-center transform  transition-all duration-500 ${
+        isVisible ? 'pointer-events-auto' : 'pointer-events-none'
+      }`}
+    >
+      <div className="flex flex-col items-center space-y-2">
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          onClick={() => {
+            window.scrollTo({
+              top: 400,
+              behavior: 'smooth'
+            });
+          }}
+          className="relative"
+        >
+          {/* Glowing background */}
+          <div className="absolute inset-0 bg-[#EF6304] rounded-full blur-lg opacity-50 animate-pulse"></div>
+          
+          {/* Arrow icon */}
+          <div className="relative w-12 h-12 bg-[#EF6304] rounded-full flex items-center justify-center shadow-lg">
+            <svg 
+              width="24" 
+              height="24" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              className="text-white"
+            >
+              <path 
+                d="M7 10L12 15L17 10" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+          
+          {/* Additional glow rings */}
+          <div className="absolute inset-0 bg-[#EF6304] rounded-full opacity-30 animate-ping"></div>
+          <div className="absolute inset-2 bg-[#EF6304] rounded-full opacity-20 animate-pulse"></div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Works = () => {
   const projects = [
     {
@@ -159,89 +225,94 @@ const Works = () => {
   }, []);
 
   return (
-    <section className={`${styles.padding} max-w-7xl mx-auto mt-[280px] relative z-0`} id="works">
-      <span className='hash-span' id="works">&nbsp;</span>
-      
-      {/* Header */}
-      <motion.div
-        initial={{ 
-          x: 350, 
-          opacity: 0
-        }}
-        animate={{ 
-          x: 0, 
-          opacity: 1,
-          scale: viewportTopY > 200 ? 1 : 1
-        }}
-        transition={{
-          type: "tween",
-          duration: 0.5,
-          bounce: 0,
-        }}
-        className="text-center mb-16"
-      >
-        <p className={styles.sectionSubText}>Our Work</p>
-        <h2 className={styles.sectionHeadText}>Projects.</h2>
-        <p className="text-secondary text-[17px] max-w-3xl mx-auto mt-4 leading-[30px]">
-          Discover our portfolio of successful projects that showcase our expertise in web development, 
-          design, and digital solutions. Each project represents our commitment to delivering 
-          innovative, user-friendly, and impactful digital experiences.
-        </p>
-      </motion.div>
+    <>
+      <section className={`${styles.padding} max-w-7xl mx-auto mt-[280px] relative z-0`} id="works">
+        <span className='hash-span' id="works">&nbsp;</span>
+        
+        {/* Header */}
+        <motion.div
+          initial={{ 
+            x: 0, 
+            opacity: 0
+          }}
+          animate={{ 
+            x: 0, 
+            opacity: 1,
+            scale: viewportTopY > 200 ? 1 : 1
+          }}
+          transition={{
+            type: "tween",
+            duration: 0.5,
+            bounce: 0,
+          }}
+          className="text-center mb-16"
+        >
+          <p className={styles.sectionSubText}>Our Work</p>
+          <h2 className={styles.sectionHeadText}>Projects.</h2>
+          <p className="text-secondary text-[17px] max-w-3xl mx-auto mt-4 leading-[30px]">
+            Discover our portfolio of successful projects that showcase our expertise in web development, 
+            design, and digital solutions. Each project represents our commitment to delivering 
+            innovative, user-friendly, and impactful digital experiences.
+          </p>
+        </motion.div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
-          <ProjectCard 
-            key={project.title} 
-            project={project} 
-            index={index}
-            viewportTopY={viewportTopY}
-          />
-        ))}
-      </div>
+        {/* Scroll Arrow */}
+        <ScrollArrow viewportTopY={viewportTopY} />
 
-      {/* Call to Action */}
-      <motion.div
-        initial={{ 
-          x: 350, 
-          opacity: 0
-        }}
-        animate={{ 
-          x: viewportTopY > 600 ? 0 : 350, 
-          opacity: viewportTopY > 600 ? 1 : 0,
-          scale: viewportTopY > 600 ? 1 : 1
-        }}
-        transition={{
-          type: "tween",
-          duration: 0.5,
-          bounce: 0,
-        }}
-        className="bg-[#070202] rounded-3xl p-8 md:p-12 shadow-card mt-16 text-center"
-      >
-        <h3 className="text-white font-bold text-[24px] md:text-[32px] mb-4">
-          Ready to Start Your Next Project?
-        </h3>
-        <p className="text-secondary text-[16px] leading-[28px] max-w-2xl mx-auto mb-8">
-          Let's work together to bring your vision to life. Whether you need a web application, 
-          website, or custom digital solution, we're here to help you succeed.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/contact" 
-            className="bg-[#EF6304] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#d55a04] transition-colors"
-          >
-            Get Started
-          </a>
-          <a 
-            href="/about" 
-            className="bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-700 transition-colors"
-          >
-            Learn More
-          </a>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard 
+              key={project.title} 
+              project={project} 
+              index={index}
+              viewportTopY={viewportTopY}
+            />
+          ))}
         </div>
-      </motion.div>
-    </section>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ 
+            x: 350, 
+            opacity: 0
+          }}
+          animate={{ 
+            x: viewportTopY > 600 ? 0 : 350, 
+            opacity: viewportTopY > 600 ? 1 : 0,
+            scale: viewportTopY > 600 ? 1 : 1
+          }}
+          transition={{
+            type: "tween",
+            duration: 0.5,
+            bounce: 0,
+          }}
+          className="bg-[#070202] rounded-3xl p-8 md:p-12 shadow-card mt-16 text-center"
+        >
+          <h3 className="text-white font-bold text-[24px] md:text-[32px] mb-4">
+            Ready to Start Your Next Project?
+          </h3>
+          <p className="text-secondary text-[16px] leading-[28px] max-w-2xl mx-auto mb-8">
+            Let's work together to bring your vision to life. Whether you need a web application, 
+            website, or custom digital solution, we're here to help you succeed.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/contact" 
+              className="bg-[#EF6304] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#d55a04] transition-colors"
+            >
+              Get Started
+            </a>
+            <a 
+              href="/about" 
+              className="bg-gray-800 text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-700 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
+        </motion.div>
+      </section>
+    </>
   );
 };
 

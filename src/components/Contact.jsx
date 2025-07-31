@@ -15,7 +15,7 @@ const Contact = () => {
 
   useEffect(() => {
     // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual public key
+    emailjs.init("HXIyfXQPu-xo_gFv-"); // Replace with your actual public key
   }, []);
 
   const handleChange = (e) => {
@@ -34,16 +34,16 @@ const Contact = () => {
 
     emailjs
       .send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_rwmlqp8', // Replace with your EmailJS service ID
+        'template_h9o39zu', // Replace with your EmailJS template ID
         {
           from_name: form.name,
           to_name: 'Guntu IT Solutions',
           from_email: form.email,
-          to_email: 'contact@guntu.com',
+          to_email: 'info@guntuit.co.ke',
           message: form.message,
         },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        'HXIyfXQPu-xo_gFv-' // Replace with your EmailJS public key
       )
       .then(
         () => {
@@ -68,14 +68,11 @@ const Contact = () => {
     <div className={`${styles.padding} md:max-w-7xl w-full md:mx-auto relative mt-[150px] grid grid-cols-1 gap-12`}>
 
      {/* Contact Form - Left Side */}
-     <motion.div
-     initial={{ opacity: 0, x: +350 }}
-     whileInView={{ opacity: 1, x: 0 }}
-     transition={{ duration: 0.8 }}
+     <div
      className="rounded-3xl justify-center items-center"
    >
-     <div className='md:col-span-1 rounded-3xl mt-[200px] p-10 max-w-3xl mx-auto'>
-     <div className=' z-10 px-5 relative'>
+     <div className='md:col-span-1 rounded-3xl mt-[200px] max-w-2xl mx-auto'>
+     <div className=' z-10  relative'>
        <h3 className="text-[#EF6304] font-bold text-[32px] mb-4">Contact Us</h3>
        <p className="text-gray-300 text-[16px] leading-[24px]">
          Ready to start your next project? 
@@ -88,7 +85,7 @@ const Contact = () => {
      <form
        ref={formRef}
        onSubmit={handleSubmit}
-       className="space-y-4 md:px-5 ms-5"
+       className="space-y-4 "
      >
        <div>
          <input
@@ -128,20 +125,20 @@ const Contact = () => {
        </button>
      </form>
      </div>
-   </motion.div>
+   </div>
    <motion.div
    className="space-y-6 rounded-3xl"
    >
-    <div style={{height: '580px', width: '92%', position: 'absolute', zIndex: '-1'}} className='rounded-3xl mt-[-630px]'>
+    <div style={{height: '100%', width: '100%', position: 'absolute'}} className='rounded-3xl mt-[-680px] z-[-1]'>
        <Dither
-         waveColor={[0.8, 0.5, 0.4]}
-         disableAnimation={false}
-         enableMouseInteraction={true}
-         mouseRadius={0.3}
-         colorNum={7}
-         waveAmplitude={0.3}
-         waveFrequency={3}
-         waveSpeed={0.05}
+         particleColors={['#EF6304', '#EF6304']}
+         particleCount={300}
+         particleSpread={10}
+         speed={0.21}
+         particleBaseSize={200}
+         moveParticlesOnHover={true}
+         alphaParticles={false}
+         disableRotation={false}
        />
      </div>
    </motion.div>
