@@ -169,11 +169,11 @@ const Vision = () => {
                     scale: 1.02,
                     transition: { duration: 0.3 }
                   }}
-                  className={`bg-neutral-900 .animated-border-gradient rounded-2xl p-6 shadow-sm ${
+                  className={`bg-neutral-900 .animated-border-gradient rounded-2xl p-6 shadow-sm flex flex-col h-55 md:h-50 ${
                     index === 0? 'md:col-span-4' : index === 1? 'md:col-span-6' : index === 2? 'md:col-span-3' : index === 3? 'md:col-span-3' : index === 4? 'md:col-span-4' : 'md:col-span-3'
                   }`}
                 >
-                  <div className='flex items-start'>
+                  <div className='flex items-center flex-shrink-0'>
                     {/* Icon */}
                     <div className='w-20 h-20 flex items-center justify-center flex-shrink-0'>
                       <img 
@@ -188,7 +188,7 @@ const Vision = () => {
                       <h5 className='text-gray-200 font-bold text-[18px] mb-3'>{solution.title}</h5>
                     </div>
                   </div>
-                  <div className='flex items-start'>
+                  <div className='flex-1 flex items-end'>
                     <p className='text-gray-300 text-[14px] leading-[20px]'>{solution.description}</p>
                   </div>
                 </motion.div>

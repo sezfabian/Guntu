@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
-import { fadeIn } from '../utils/motion';
 import { fabian, walter, faith } from '../assets';
+import ScrollArrow from './Scroll';
 
 const TeamMember = ({ name, role, avatar, description, index, viewportTopY }) => (
   <motion.div
@@ -98,7 +98,7 @@ const About = () => {
   }, []);
 
   return (
-    <section className={`${styles.padding} max-w-7xl mx-auto mt-[150px] relative z-0`} id="about">
+    <section className={`${styles.padding} max-w-7xl mx-auto text-center mt-[150px] relative z-0`} id="about">
       <span className='hash-span' id="about">&nbsp;</span>
       
       {/* Header Card */}
@@ -123,26 +123,18 @@ const About = () => {
         <h2 className={styles.sectionHeadText}>About Us.</h2>
         
         <div className="mt-6 space-y-6">
-          <p className='text-secondary text-[17px] leading-[30px]'>
-            At Guntu IT Solutions, we're not just building software – we're crafting the future. 
-            Our team of passionate innovators combines cutting-edge technology with creative problem-solving 
-            to deliver solutions that don't just meet expectations, they exceed them. From startups to 
-            enterprise giants, we've helped hundreds of clients transform their digital presence and 
-            achieve unprecedented growth.
+          <p className='text-secondary text-[14px] md:text-[17px] leading-[25px] md:leading-[30px] mb-6'>
+          At Guntu IT Solutions, we do more than just build software — we bring ideas to life through technology and storytelling. From web apps and mobile applications to AI chatbots, websites, documentaries, and marketing videos, our work blends innovation with creativity to serve businesses, brands, and communities.
           </p>
-
-          <motion.p 
-            variants={fadeIn("up", "tween", 0.2, 1)}
-            className='text-secondary text-[17px] leading-[30px]'
+          <span className='text-secondary h-5 text-[17px] leading-[30px]'> </span>
+          <p 
+            className='text-secondary text-[14px] md:text-[17px] leading-[25px] md:leading-[30px]'
           >
-            Founded in 2018, we've grown from a small team of dreamers to a powerhouse of digital 
-            transformation. Our expertise spans web development, mobile applications, cloud solutions, 
-            and emerging technologies like AI and blockchain. We believe in building lasting partnerships 
-            with our clients, understanding their unique challenges, and delivering solutions that drive 
-            real business value.
-          </motion.p>
+            Founded in 2022, we came together as a team of creatives and technologists with one goal: to do something meaningful with our skills. Since then, we've partnered with clients across sectors to deliver smart digital solutions and compelling content that inform, engage, and inspire.
+          </p>
         </div>
       </motion.div>
+      <ScrollArrow viewportTopY={viewportTopY} minY={200} scrollDistance={500} />
 
       {/* Team Section */}
       <motion.div

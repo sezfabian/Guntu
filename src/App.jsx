@@ -13,7 +13,7 @@ const  App = () => {
                 <Navbar/>
                 <Hero/>
               </div>
-              <div className="mt-[-150px]">
+              <div className="mt-[-50px] sm:mt-[-200px]">
                 <Vision/>
               </div>
               <Footer/>

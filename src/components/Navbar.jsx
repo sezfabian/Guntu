@@ -9,7 +9,6 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -30,6 +29,8 @@ const Navbar = () => {
     const currentPath = location.pathname;
     const currentNav = navLinks.find(nav => nav.path === currentPath);
     setActive(currentNav ? currentNav.title : "");
+    // Scroll to top when route changes
+    window.scrollTo(0, 0);
   }, [location]);
 
   return (
@@ -59,9 +60,10 @@ const Navbar = () => {
               className={`${
                 active === nav.title ? "text-white" : "text-secondary"
               } hover:text-white text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
             >
-              <Link to={nav.path}>{nav.title}</Link>
+              <a href={nav.path} className="block">
+                {nav.title}
+              </a>
             </li>
           ))}
         </ul>
@@ -86,12 +88,11 @@ const Navbar = () => {
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
                     active === nav.title ? "text-white" : "text-secondary"
                   }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
+                  onClick={() => setToggle(!toggle)}
                 >
-                  <Link to={nav.path}>{nav.title}</Link>
+                  <a href={nav.path} className="block">
+                    {nav.title}
+                  </a>
                 </li>
               ))}
             </ul>

@@ -1,19 +1,30 @@
-import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
 import { useState, useEffect } from "react";
 import { HeroSkeleton } from "./Loader";
+import ScrollArrow from "./Scroll";
 
 const Hero = () => {
   const [isLoading, setIsLoading] = useState(true);
-
+  const [viewportTopY, setViewportTopY] = useState(0);
+  
   useEffect(() => {
     // Simulate loading time for 3D model and other resources
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 seconds loading time
+    }, 4000); // 2 seconds loading time
 
     return () => clearTimeout(timer);
+  }, []);
+
+  // Track scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      setViewportTopY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   if (isLoading) {
@@ -40,14 +51,19 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <div className="hidden lg:h-150 xl:h-full sm:hidden lg:block lg:mt-20 lg:ms-130 xl:ms-170">
+      <div className="hidden lg:h-150 xl:h-full sm:hidden lg:block lg:mt-20 lg:ms-140 xl:ms-160">
           <ComputersCanvas/>
       </div>
 
       <div className='absolute bottom-0 top-90 sm:top-80 md:top-40 md:ms-50 w-full h-full  justify-center items-center'>
-      <div className="h-120 sm:h-150 w-full lg:hidden">
+        <div className="h-120 sm:h-150 w-full lg:hidden">
           <ComputersCanvas/>
+        </div>
       </div>
+
+      {/* Scroll Arrow positioned at bottom center */}
+      <div className="absolute bottom-10 lg:bottom-30 left-1/2 transform -translate-x-1/2 z-10">
+        <ScrollArrow viewportTopY={viewportTopY} minY={200} scrollDistance={500} />
       </div>
     </section>
   );
