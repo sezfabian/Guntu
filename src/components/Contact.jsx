@@ -65,7 +65,7 @@ const Contact = () => {
   };
 
   return (
-    <div className={`${styles.padding} md:max-w-7xl w-full md:mx-auto relative mt-[150px] grid grid-cols-1 gap-12`}>
+    <div className={`${styles.padding} md:max-w-7xl w-full md:mx-auto relative mt-[75px] sm:mt-[120px] grid grid-cols-1 gap-12`}>
 
      {/* Contact Form - Left Side */}
      <div
