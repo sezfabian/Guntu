@@ -7,7 +7,7 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://guntu.co.ke/</loc>
+    <loc>https://guntuit.co.ke/</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -15,7 +15,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://guntu.co.ke/about</loc>
+    <loc>https://guntuit.co.ke/about</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -23,7 +23,7 @@
 
   <!-- Work/Portfolio Page -->
   <url>
-    <loc>https://guntu.co.ke/work</loc>
+    <loc>https://guntuit.co.ke/work</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -31,7 +31,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://guntu.co.ke/contact</loc>
+    <loc>https://guntuit.co.ke/contact</loc>
     <lastmod>2025-12-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
