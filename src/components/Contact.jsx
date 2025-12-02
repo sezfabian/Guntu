@@ -40,7 +40,7 @@ const Contact = () => {
           from_name: form.name,
           to_name: 'Guntu IT Solutions',
           from_email: form.email,
-          to_email: 'info@guntuit.co.ke',
+          to_email: 'cheruiyotfabian@gmail.com',
           message: form.message,
         },
         'HXIyfXQPu-xo_gFv-' // Replace with your EmailJS public key
