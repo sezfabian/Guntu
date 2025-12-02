@@ -1,0 +1,15 @@
+# robots.txt for Guntu IT Solutions
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://guntu.co.ke/sitemap.xml
+
+# Crawl-delay (optional, uncomment if needed)
+# Crawl-delay: 10
