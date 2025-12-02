@@ -76,7 +76,7 @@ const About = () => {
      const handleScroll = () => {
        setViewportTopY(window.scrollY);
      };
- 
+
      window.addEventListener('scroll', handleScroll);
      return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -85,10 +85,11 @@ const About = () => {
     <section className={`${styles.padding} max-w-10xl mx-auto text-center mt-[150px] relative z-0`} id="about"
     style={{
       backgroundImage: `url(${black})`,
-      backgroundSize: '100% 35%',
-      backgroundPosition: '0, 0',
-      backgroundPositionY: '-30.15%',
-      backgroundRepeat: 'repeat-x'
+      backgroundSize: '1900px 800px',
+      backgroundPosition: 'center top',
+      backgroundPositionY: '-450px',
+      backgroundRepeat: 'no-repeat',
+      overflow: 'hidden'
     }}
     >
       <span className='hash-span' id="about">&nbsp;</span>
@@ -109,7 +110,7 @@ const About = () => {
           duration: 0.5,
           bounce: 0,
         }}
-        className="rounded-3xl p-8 md:p-12 mt-[260px] shadow-card mb-20"
+        className="rounded-3xl p-8 md:p-12 mt-[260px] shadow-card mb-l-20"
       >
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>About Us.</h2>
