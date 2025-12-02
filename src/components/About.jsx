@@ -1,27 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { styles } from '../styles';
-import { fabian, walter, faith } from '../assets';
+import { fabian, walter, faith, black } from '../assets';
 import ScrollArrow from './Scroll';
 
 const TeamMember = ({ name, role, avatar, description, index, viewportTopY }) => (
-  <motion.div
-    initial={{ 
-      x: 350, 
-      opacity: 0
-    }}
-    animate={{ 
-      x: viewportTopY > (window.innerWidth >= 1024 ? 400 : 400 + 200 * index) ? 0 : 350, 
-      opacity: viewportTopY > (window.innerWidth >= 1024 ? 400 : 400 + 200 * index) ? 1 : 0,
-      scale: viewportTopY > (window.innerWidth >= 1024 ? 400 : 400 + 200 * index) ? 1 : 1
-    }}
-    transition={{
-      type: "tween",
-      duration: 0.5,
-      bounce: 0,
-    }}
-    className='bg-[#070202] p-6 rounded-3xl w-full max-w-sm mx-auto shadow-card hover:shadow-lg transition-all duration-300'
-  >
+  <div>
     <div className='relative w-32 h-32 mx-auto mb-4'>
       <img
         src={avatar}
@@ -34,7 +18,7 @@ const TeamMember = ({ name, role, avatar, description, index, viewportTopY }) =>
       <p className='text-[#EF6304] text-[14px] font-medium mb-3'>{role}</p>
       <p className='text-secondary text-[12px] leading-relaxed'>{description}</p>
     </div>
-  </motion.div>
+    </div>
 );
 
 const About = () => {
@@ -98,7 +82,15 @@ const About = () => {
   }, []);
 
   return (
-    <section className={`${styles.padding} max-w-7xl mx-auto text-center mt-[150px] relative z-0`} id="about">
+    <section className={`${styles.padding} max-w-10xl mx-auto text-center mt-[150px] relative z-0`} id="about"
+    style={{
+      backgroundImage: `url(${black})`,
+      backgroundSize: '100% 35%',
+      backgroundPosition: '0, 0',
+      backgroundPositionY: '-30.15%',
+      backgroundRepeat: 'repeat-x'
+    }}
+    >
       <span className='hash-span' id="about">&nbsp;</span>
       
       {/* Header Card */}
@@ -117,7 +109,7 @@ const About = () => {
           duration: 0.5,
           bounce: 0,
         }}
-        className="bg-[#070202] rounded-3xl p-8 md:p-12 shadow-card mb-12"
+        className="rounded-3xl p-8 md:p-12 mt-[260px] shadow-card mb-20"
       >
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>About Us.</h2>
@@ -152,7 +144,7 @@ const About = () => {
           duration: 0.5,
           bounce: 0,
         }}
-        className="bg-[#070202] rounded-3xl p-8 md:p-12 shadow-card mb-12"
+        className="bg-[#0] rounded-3xl p-8 md:p-12 shadow-card mt-30 mb-12"
       >
         <div className="text-center mb-8">
           <p className={styles.sectionSubText}>Meet the team</p>
@@ -188,7 +180,7 @@ const About = () => {
           duration: 0.5,
           bounce: 0,
         }}
-        className="bg-[#070202] rounded-3xl p-8 md:p-12 shadow-card mb-12"
+        className="bg-[#0] rounded-3xl p-8 md:p-12 shadow-card mb-12"
       >
         <h3 className='text-white font-bold text-[24px] md:text-[32px] mb-6 text-center'>Our Mission</h3>
         <p className='text-secondary text-[16px] leading-[28px] text-center max-w-4xl mx-auto'>
@@ -234,7 +226,7 @@ const About = () => {
               duration: 0.5,
               bounce: 0,
             }}
-            className="bg-[#070202] rounded-2xl p-6 text-center shadow-card hover:shadow-lg transition-all duration-300"
+            className="bg-[#0] rounded-2xl p-6 text-center shadow-card hover:shadow-lg transition-all duration-300"
           >
             <h4 className='text-[#EF6304] font-bold text-[32px] md:text-[40px] mb-2'>{stat.number}</h4>
             <p className='text-white font-semibold text-[16px] mb-2'>{stat.label}</p>

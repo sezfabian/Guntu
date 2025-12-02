@@ -39,6 +39,7 @@ import tripguide from "./tripguide.png";
 import fabian from "./team/fabian.jpg";
 import walter from "./team/walter.jpg";
 import faith from "./team/faith.jpg";
+import black from "./black.jpg";
 
 export {
   logo,
@@ -79,4 +80,5 @@ export {
   faith,
   farm,
   munjiti,
+  black,
 };
