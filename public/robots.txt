@@ -9,7 +9,7 @@ Allow: /
 # Disallow: /private/
 
 # Sitemap location
-Sitemap: https://guntu.co.ke/sitemap.xml
+Sitemap: https://guntuit.co.ke/sitemap.xml
 
 # Crawl-delay (optional, uncomment if needed)
 # Crawl-delay: 10
